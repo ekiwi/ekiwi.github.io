@@ -127,3 +127,7 @@ ul.pubs-list { list-style-type: none; padding-left: 0; }
 .pubs-list li {	margin: 1em 0 1em 0; }
 .paper { font-weight: bolder; font-style: italic; }
 .me { color: #C00; font-weight: bolder; }
+
+/* custom CSS */
+img#headshot { width: 250px; object-fit: cover; border-radius: 25px; }
+div.intro { font-size: 18px; padding-top: 10px; }
