@@ -1,20 +1,10 @@
-/*
-	Minimal CSS
-	minimalcss.com
-*/
+/* Minimal CSS minimalcss.com */
 
 /* fonts deleted */
 
 heading {
   font-family: Verdana, Helvetica, sans-serif;
   font-size: 22px;
-}
-
-
-papertitle {
-  font-family: Verdana, Helvetica, sans-serif;
-  font-size: 14px;
-  font-weight: 700
 }
 
 name {
@@ -121,11 +111,6 @@ th { font-weight: bold; }
 td { text-align: left; }
 tfoot { font-style: italic; }
 
-<style>
-    tab1 { padding-left: 4em; }
-    tab2 { padding-left: 1em; }
-</style>
-
 /* Print */
 @media print {
 	* {
@@ -134,3 +119,11 @@ tfoot { font-style: italic; }
 		box-shadow: none !important;
 		color: #000 !important;
 	}
+}
+
+
+/* Paper CSS inspired by rohan.padhye.org */
+ul.pubs-list { list-style-type: none; padding-left: 0; }
+.pubs-list li {	margin: 1em 0 1em 0; }
+.paper { font-weight: bolder; font-style: italic; }
+.me { color: #C00; font-weight: bolder; }
