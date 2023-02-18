@@ -131,3 +131,8 @@ ul.pubs-list { list-style-type: none; padding-left: 0; }
 /* custom CSS */
 img#headshot { width: 250px; object-fit: cover; border-radius: 25px; }
 div.intro { font-size: 18px; padding-top: 10px; }
+
+/* news */
+ul.news { list-style-type: none; padding-left: 0; }
+.news li {	display: flex; }
+div.date { flex: 0 0 50px; text-align: right; margin-right: 1em; }
