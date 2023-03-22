@@ -6,21 +6,66 @@
 <meta charset="utf-8" />
 <meta name="author" content="Kevin Laeufer" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="../minimal.css" rel="stylesheet" />
 
 </head>
 <body>
 
+<div class="container">
 <header>
+<div class="badges">
+<a title="Artifacts Available V1.1" href="https://www.acm.org/publications/policies/artifact-review-badging">
+<img class="badge" src="../images/artifacts_available_v1_1.png" alt="Artifacts Available V1.1"></a>
+<a title="Artifacts Evaluated: Functional V1.1" href="https://www.acm.org/publications/policies/artifact-review-badging">
+<img class="badge" src="../images/artifacts_evaluated_functional_v1_1.png" alt="Artifacts Evaluated: Functional V1.1"></a>
+<a title="Results Reproduced V1.1" href="https://www.acm.org/publications/policies/artifact-review-badging">
+<img class="badge" src="../images/results_reproduced_v1_1.png" alt="Results Reproduced V1.1"></a>
+</div>
 <h1>Simulator Independent Coverage for RTL Hardware Languages - ASPLOS 2023</h1>
+
+<div class="authors">
+<a href="https://kevinlaeufer.com">Kevin Laeufer</a>,
+<a href="https://vighneshiyer.com">Vighnesh Iyer</a>,
+<a href="https://people.eecs.berkeley.edu/~biancolin">David Biancolin</a>,
+<a href="https://jackbackrack.github.io">Jonathan Bachrach</a>,
+<a href="https://people.eecs.berkeley.edu/~bora">Borivoje Nikolić</a>,
+<a href="https://people.eecs.berkeley.edu/~ksen">Koushik Sen</a></div>
+<div class="paper-links">
+<a href = "pdfs/simulator_independent_coverage_kevin_laeufer_asplos2023.pdf">Paper PDF</a> /
+<a href = "https://github.com/ekiwi/simulator-independent-coverage">GitHub</a> /
+<a href = "videos/simulator_independent_coverage_kevin_laeufer_asplos2023_lightning.mp4">Lightning Talk</a> /
+<a href = "pdfs/simulator_independent_coverage_kevin_laeufer_asplos2023_lightning.pdf">Lightning Slides</a> /
+<a href = "https://doi.org/10.1145/3582016.3582019">DOI Link</a>
+</div>
 </header>
 
+
 <main>
-<a href="../pdfs/simulator_independent_coverage_kevin_laeufer_asplos2023.pdf">PDF</a>
+
+<div class="row"><div class="abstract">
+<img class="float-right" src="simulator_independent_coverage_asplos2023/1_coverage_figure_m_n.svg"
+ style="width: 350px;"/>
+We demonstrate a new approach to implementing automated coverage
+metrics including line, toggle, and finite state machine coverage.
+Each metric is implemented through a compiler pass with a report
+generator. They are decoupled from the backend simulation, emulation,
+or formal verification tool through a simple API designed
+around a single new cover primitive. Our prototype for the Chisel
+hardware construction language demonstrates support across three
+software simulators, the FPGA-accelerated FireSim simulator and a
+formal tool. We demonstrate collecting line coverage while booting
+Linux with FireSim at a target frequency of 65 MHz. By construction,
+coverage can be trivially merged across backends.
+</div></div>
+
+<div class="row">
+
+</div>
 </main>
 
 <footer>
 </footer>
-
+</div>
 </body>
 </html>
 

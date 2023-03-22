@@ -138,3 +138,8 @@ div.intro { font-size: 18px; padding-top: 10px; }
 ul.news { list-style-type: none; padding-left: 0; }
 .news li {	display: flex; }
 div.date { flex: 0 0 50px; text-align: right; margin-right: 1em; }
+
+/* Project Page CSS */
+div.authors { font-size: 18px; }
+div.abstract { font-size: 18px; line-height: 1.4; }
+div.paper-links { font-size: 18px;  margin-top: 5px; padding-top: 20px; border-top: 1px solid #ccc; }
