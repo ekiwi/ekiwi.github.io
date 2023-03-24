@@ -1,0 +1,203 @@
+<!-- Based on a poster template from https://github.com/cpitclaudel/academic-poster-template -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Simulator Independent Coverage for RTL Hardware Languages — ASPLOS 2023</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./poster.css">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1">
+
+    <!-- MathJax -->
+    <script src="./tex-chtml-full.min.js"></script>
+        
+      </head>
+
+  <body vocab="http://schema.org/" typeof="ScholarlyArticle">
+    <header role="banner">
+      <aside>
+          <a href="https://slice.eecs.berkeley.edu/"><img src="./slice_logo.png" alt="SLICE Lab"></a>
+      </aside>
+      <div>
+        <h1 property="headline">Simulator Independent Coverage for RTL Hardware Languages</h1>
+                <address>
+              <a property="author">Kevin Laeufer<sup>a</sup></a>,
+  <a property="author">Vighnesh Iyer<sup>a</sup></a>,
+  <a property="author">David Biancolin<sup>b</sup></a>,
+  <a property="author">Jonathan Bachrach<sup>c</sup></a>,
+  <a property="author">Borivoje Nikolić<sup>a</sup></a>,
+  <a property="author">Koushik Sen<sup>a</sup></a>
+          <br />            <sup>a</sup><a property="sourceOrganization">University of California, Berkeley</a>,
+  <sup>b</sup><a property="sourceOrganization">SiFive</a>,
+  <sup>c</sup><a property="sourceOrganization">JITX</a>
+        </address>
+        <span class="publication-info">
+                      <span property="publisher">ASPLOS 2023</span>,
+            <time pubdate property="datePublished" datetime="2023-03-25">March 25, 2023</time>
+                  </span>
+      </div>
+      <aside>
+          <a href="https://berkeley.edu"><img src="./berkeley_logo.svg" alt="UC Berkeley"></a>
+      </aside>
+    </header>
+
+    <main property="articleBody">
+      <article>
+<header><h3>Coverage: Who tests the testers?</h3></header>
+<img src="./coverage_poster_why_coverage.svg" />
+</article>
+
+<article>
+<header><h3>Problem 1: Most open-source simulators lack coverage</h3></header>
+<ul>
+  <li>Verilator only supports line and toggle coverage</li>
+  <li>Treadle (Chisel interpreter), ESSENT and FireSim have no coverage support</li>
+</ul>
+</article>
+
+<article>
+<header><h3>Problem 2: Verilog coverage is an inadequate replacement for native Chisel coverage</h3></header>
+<img src="./3_coverage_line_coverage_of_verilog.svg" style="width: 80%;" />
+<figcaption>
+In this example, the translation to structural Verilog
+replaces a branch with a conditional assignment. Therefore,
+100% line coverage on the generated Verilog does not necessarily
+imply complete line coverage of the Chisel source.
+</figcaption>
+</article>
+
+<article>
+<header><h3>Our Solution: Simulator Independent Coverage</h3></header>
+<img src="./coverage_poster_overview.svg" style="width: 95%;" />
+<figcaption>
+We show how a single new <code>cover</code> statement allows us to move all coverage instrumentation into the FIRRTL compiler.
+Adding support for the <code>cover</code> statement to a simulator is fairly simple.
+</figcaption>
+</article>
+
+
+
+<article>
+<header><h3>Line Coverage</h3></header>
+<img src="./5_coverage_line_coverage.svg" style="width: 80%;" />
+<figcaption>
+The line coverage pass instruments every <code>when</code>
+statement in the FIRRTL circuit. The mapping from lines to
+branches is used to generate the coverage report from the
+counts reported by the simulator.
+</figcaption>
+</article>
+
+
+
+<article>
+<header><h3>Finite State Machine Coverage</h3></header>
+<img src="./7_coverage_fsm_coverage.svg" style="width: 80%;" />
+<figcaption>
+Finite state machine (FSM) coverage assumes that
+the state register uses a ChiselEnum. We first analyze all possible
+next states by simplifying the state update expression for
+each possible current state. We then add cover statements
+for all states and possible transitions.
+</figcaption>
+</article>
+
+<article>
+<header><h3>Verilator: <code>cover</code> Statement Support</h3></header>
+<img src="./cover.svg" style="width: 80%;" />
+</article>
+
+
+<article>
+<header><h3>Verilator: Coverage Instrumentation Overhead</h3></header>
+<img src="./8_verilator_overhead.png" width=60% />
+<figcaption>
+Coverage instrumentation overhead on Verilator
+v4.034. For TLRAM, the measured overhead of our FIRRTL
+line coverage is close to zero.
+</figcaption>
+</article>
+
+<article>
+<header><h3>The <code>cover</code> Statement</h3></header>
+<img src="./presentation_cover.svg" style="width: 80%;" />
+<figcaption>
+</figcaption>
+</article>
+
+<article>
+<header><h3>Toggle Coverage</h3></header>
+<img src="./6_coverage_toggle_coverage.svg" style="width: 70%;" />
+<figcaption>
+The toggle coverage pass adds a register and a xor
+gate. It avoids redundant instrumentation for signals that
+always have the same value.
+</figcaption>
+</article>
+
+
+
+
+
+<article>
+<header><h3>FireSim: <code>cover</code> Statement Support on FPGA</h3></header>
+<img src="./4_coverage_firesim_scan_chain.svg" width=70% />
+<figcaption>We generate saturating counters and a scan chain
+  for all <code>cover</code> statements for FPGA-accelerated simulation
+  with FireSim.</figcaption>
+</article>
+
+  <article>
+    <header><h3>FireSim: Utilization and \(f_{max}\)</h3></header>
+    <div class="columns-center" style="grid-template-columns: 50fr 50fr">
+    <img src="./9_firesim_utilization.png" width=100% />
+    <img src="./10_firesim_fmax.png" width=100% />
+    </div>
+  </article>
+
+
+<article>
+<header><h3>Extensive Simulator Support</h3></header>
+<img src="./upshot.svg" width=100% />
+</article>
+
+
+<article style="display:grid; align-content:center;">
+
+<div class="columns-center" style="grid-template-columns: 60fr 40fr"><div>
+<header><h3>More Features</h3></header>
+<ul>
+  <li>Applicable to other hardware languages.</li>
+  <li>Feedback-Directed Fuzz Testing</li>
+  <li>Coverage merging</li>
+  <li>Formal cover trace generation</li>
+</ul>
+</div><div>
+<img src="./project_page_qr.png" style="width: 116%; max-width: none; position:relative; right:24px; margin-top:-10px;" />
+<figcaption>Paper PDF, Code & Slides</figcaption>
+</div></div>
+</article>
+
+
+    </main>
+
+    <footer>
+      <aside>
+          <address class="monospace" style="font-weight:400;">
+    <a href="https://kevinlaeufer.com/papers/simulator_independent_coverage_asplos2023.html">https://kevinlaeufer.com/papers/simulator_independent_coverage_asplos2023.html</a>
+  </address>
+      </aside>
+      <div>
+          <address class="monospace" style="font-weight:400;">
+    {laeufer, vighnesh.iyer, biancolin, bora, ksen}@eecs.berkeley.edu,
+    jrb@pobox.com
+  </address>
+      </div>
+      <aside>
+          <address>
+    ASPLOS 2023
+  </address>
+      </aside>
+    </footer>
+  </body>
+</html>
